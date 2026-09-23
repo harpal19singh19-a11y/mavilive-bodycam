@@ -6,7 +6,6 @@
 
 <title>BODYCAM</title>
 
-<!-- BODYCAM FONT -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -62,13 +61,10 @@ body {
 }
 
 
-/* =========================
-   REC
-   ========================= */
+/* REC */
 
 .rec {
   color: #ff3030;
-
   font-weight: 800;
 
   text-shadow:
@@ -78,21 +74,16 @@ body {
 }
 
 
-/* =========================
-   REC DOT
-   ========================= */
+/* REC DOT */
 
 .rec-dot {
   display: inline-block;
   color: #ff3030;
-
   animation: recBlink 1s infinite;
 }
 
 
-/* =========================
-   BODYCAM
-   ========================= */
+/* BODYCAM */
 
 .brand {
   color: #fff;
@@ -110,14 +101,33 @@ body {
 
 
 /* =========================
-   PLAYER / DEPARTMENT
+   PLAYER
    ========================= */
 
-.info {
+.player {
   font-size: 16px;
   font-weight: 600;
 
   margin-top: 4px;
+
+  letter-spacing: .7px;
+
+  text-shadow:
+    0 2px 3px rgba(0, 0, 0, 0.95),
+    0 4px 8px rgba(0, 0, 0, 0.75),
+    0 7px 14px rgba(0, 0, 0, 0.50);
+}
+
+
+/* =========================
+   JOB
+   ========================= */
+
+.job {
+  font-size: 16px;
+  font-weight: 600;
+
+  margin-top: 2px;
 
   letter-spacing: .7px;
 
@@ -183,7 +193,7 @@ body {
 <script>
 
 /* =========================
-   GET URL PARAMETERS
+   URL PARAMETERS
    ========================= */
 
 const q = new URLSearchParams(location.search);
@@ -195,10 +205,10 @@ const player =
   q.get("player") || "PLAYER";
 
 
-/* DEPARTMENT / JOB */
+/* JOB */
 
-const department =
-  q.get("department") || "CIVILIAN";
+const job =
+  q.get("job") || "CIVILIAN";
 
 
 /* =========================
@@ -223,12 +233,10 @@ function escapeHtml(s) {
 
 
 /* =========================
-   CREATE OVERLAY
+   OVERLAY
    ========================= */
 
 document.getElementById("app").innerHTML = `
-
-  <!-- REC + BODYCAM -->
 
   <div class="top-line">
 
@@ -243,21 +251,15 @@ document.getElementById("app").innerHTML = `
   </div>
 
 
-  <!-- PLAYER -->
-
-  <div class="info">
+  <div class="player">
     PLAYER: ${escapeHtml(player)}
   </div>
 
 
-  <!-- DEPARTMENT -->
-
-  <div class="info">
-    DEPT: ${escapeHtml(department)}
+  <div class="job">
+    ${escapeHtml(job)}
   </div>
 
-
-  <!-- DATE / TIME -->
 
   <div id="clock" class="clock">
     --/--/---- --:--:--
@@ -281,8 +283,6 @@ function updateClock() {
 
 }
 
-
-/* START CLOCK */
 
 updateClock();
 
