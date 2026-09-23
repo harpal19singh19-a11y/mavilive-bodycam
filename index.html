@@ -20,28 +20,43 @@ html,
 body {
   margin: 0;
   width: 100%;
-  min-height: 100%;
+  height: 100%;
 }
 
 body {
   font-family: 'Roboto Condensed', Arial, sans-serif;
   background: #0a0a0a;
   color: #fff;
-
-  min-height: 100vh;
-
-  /* CENTER OF WEB PAGE */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 20px;
+  overflow: auto;
 }
 
 
-/* =========================
-   MAIN CARD
-========================= */
+/* =====================================================
+   FORCE CARD TO EXACT CENTER OF WEBPAGE
+===================================================== */
+
+.page-center {
+  position: fixed;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  padding: 20px;
+
+  z-index: 9999;
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
 
 .card {
   width: min(560px, 100%);
@@ -59,9 +74,9 @@ body {
 }
 
 
-/* =========================
+/* =====================================================
    LOGO
-========================= */
+===================================================== */
 
 .logo {
   font-size: 30px;
@@ -74,9 +89,9 @@ body {
 }
 
 
-/* =========================
+/* =====================================================
    SUBTITLE
-========================= */
+===================================================== */
 
 .sub {
   color: #aaa;
@@ -84,9 +99,9 @@ body {
 }
 
 
-/* =========================
+/* =====================================================
    FORM
-========================= */
+===================================================== */
 
 .row {
   margin: 15px 0;
@@ -94,7 +109,9 @@ body {
 
 label {
   display: block;
+
   font-weight: 700;
+
   margin-bottom: 7px;
 }
 
@@ -126,9 +143,9 @@ input:focus {
 }
 
 
-/* =========================
+/* =====================================================
    BUTTONS
-========================= */
+===================================================== */
 
 button {
   width: 100%;
@@ -166,16 +183,18 @@ button:active {
 .secondary {
   background: #292929;
   color: #fff;
+
   margin-top: 10px;
 }
 
 
-/* =========================
-   URL BOX
-========================= */
+/* =====================================================
+   URL
+===================================================== */
 
 .urlbox {
   display: none;
+
   margin-top: 22px;
 }
 
@@ -198,9 +217,9 @@ button:active {
 }
 
 
-/* =========================
+/* =====================================================
    PREVIEW
-========================= */
+===================================================== */
 
 .preview {
   margin-top: 22px;
@@ -223,9 +242,9 @@ button:active {
 }
 
 
-/* =========================
+/* =====================================================
    BODYCAM
-========================= */
+===================================================== */
 
 .bodycam {
   font-family: 'Roboto Condensed', Arial, sans-serif;
@@ -243,9 +262,9 @@ button:active {
 }
 
 
-/* =========================
+/* =====================================================
    TOP LINE
-========================= */
+===================================================== */
 
 .top-line {
   display: flex;
@@ -282,19 +301,15 @@ button:active {
 }
 
 
-/* =========================
-   PLAYER / JOB
-========================= */
+/* =====================================================
+   INFO
+===================================================== */
 
 .info {
   font-size: 15px;
+
   margin-top: 4px;
 }
-
-
-/* =========================
-   CLOCK
-========================= */
 
 .clock {
   font-size: 17px;
@@ -305,15 +320,14 @@ button:active {
 }
 
 
-/* =========================
+/* =====================================================
    REC BLINK
-========================= */
+===================================================== */
 
 @keyframes recBlink {
 
   0%,
   45% {
-
     opacity: 1;
 
     text-shadow:
@@ -325,7 +339,6 @@ button:active {
 
   50%,
   100% {
-
     opacity: .25;
 
     text-shadow:
@@ -335,9 +348,9 @@ button:active {
 }
 
 
-/* =========================
-   INFO
-========================= */
+/* =====================================================
+   INFORMATION
+===================================================== */
 
 .small {
   font-size: 12px;
@@ -350,13 +363,19 @@ button:active {
 }
 
 
-/* =========================
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
 @media (max-width: 650px) {
 
-  body {
+  .page-center {
+    position: absolute;
+
+    top: 20px;
+
+    transform: translateX(-50%);
+
     padding: 15px;
   }
 
@@ -375,153 +394,168 @@ button:active {
 
 <body>
 
-<div class="card">
 
-  <div class="logo">
-    BODYCAM <span>BY MAVILIVE</span>
-  </div>
+<!-- =====================================================
+     CENTER CONTAINER
+===================================================== -->
 
-  <div class="sub">
-    Bodycam By MAVILIVE • FiveM Overlay Generator
-  </div>
+<div class="page-center">
 
-
-  <!-- PLAYER -->
-
-  <div class="row">
-
-    <label for="player">
-      Player Name *
-    </label>
-
-    <input
-      id="player"
-      maxlength="40"
-      placeholder="Enter player name"
-      autocomplete="off"
-    >
-
-  </div>
+  <div class="card">
 
 
-  <!-- JOB -->
+    <!-- HEADER -->
 
-  <div class="row">
-
-    <label for="job">
-      Job
-    </label>
-
-    <input
-      id="job"
-      maxlength="40"
-      placeholder="Leave blank for CIVILIAN"
-      autocomplete="off"
-    >
-
-  </div>
-
-
-  <!-- GENERATE -->
-
-  <button
-    class="primary"
-    onclick="generate()"
-  >
-    GENERATE OBS URL
-  </button>
-
-
-  <!-- URL -->
-
-  <div
-    id="urlbox"
-    class="urlbox"
-  >
-
-    <div class="previewTitle">
-      OBS Browser Source URL
+    <div class="logo">
+      BODYCAM <span>BY MAVILIVE</span>
     </div>
 
-    <div
-      id="url"
-      class="url"
-    ></div>
+    <div class="sub">
+      Bodycam By MAVILIVE • FiveM Overlay Generator
+    </div>
+
+
+    <!-- PLAYER -->
+
+    <div class="row">
+
+      <label for="player">
+        Player Name *
+      </label>
+
+      <input
+        id="player"
+        maxlength="40"
+        placeholder="Enter player name"
+        autocomplete="off"
+      >
+
+    </div>
+
+
+    <!-- JOB -->
+
+    <div class="row">
+
+      <label for="job">
+        Job
+      </label>
+
+      <input
+        id="job"
+        maxlength="40"
+        placeholder="Leave blank for CIVILIAN"
+        autocomplete="off"
+      >
+
+    </div>
+
+
+    <!-- GENERATE -->
 
     <button
-      class="secondary"
-      onclick="copyUrl()"
-    >
-      COPY OBS URL
-    </button>
-
-    <button
-      class="secondary"
+      class="primary"
       onclick="generate()"
     >
-      REGENERATE
+      GENERATE OBS URL
     </button>
 
-  </div>
 
+    <!-- URL -->
 
-  <!-- PREVIEW -->
+    <div
+      id="urlbox"
+      class="urlbox"
+    >
 
-  <div class="preview">
-
-    <div class="previewTitle">
-      LIVE PREVIEW
-    </div>
-
-    <div class="bodycam">
-
-      <div class="top-line">
-
-        <span class="rec">
-          <span class="rec-dot">●</span>
-          REC
-        </span>
-
-        <span class="brand">
-          BODYCAM
-        </span>
-
+      <div class="previewTitle">
+        OBS Browser Source URL
       </div>
-
 
       <div
-        id="pview"
-        class="info"
+        id="url"
+        class="url"
+      ></div>
+
+      <button
+        class="secondary"
+        onclick="copyUrl()"
       >
-        PLAYER: —
-      </div>
+        COPY OBS URL
+      </button>
 
-
-      <div
-        id="jview"
-        class="info"
+      <button
+        class="secondary"
+        onclick="generate()"
       >
-        CIVILIAN
-      </div>
-
-
-      <div
-        id="clock"
-        class="clock"
-      >
-        --/--/---- --:--:-- --
-      </div>
+        REGENERATE
+      </button>
 
     </div>
 
-  </div>
+
+    <!-- PREVIEW -->
+
+    <div class="preview">
+
+      <div class="previewTitle">
+        LIVE PREVIEW
+      </div>
+
+      <div class="bodycam">
+
+        <div class="top-line">
+
+          <span class="rec">
+            <span class="rec-dot">●</span>
+            REC
+          </span>
+
+          <span class="brand">
+            BODYCAM
+          </span>
+
+        </div>
 
 
-  <div class="small">
+        <div
+          id="pview"
+          class="info"
+        >
+          PLAYER: —
+        </div>
 
-    The generated URL is self-contained.
-    It does not use localStorage and has no expiration timer,
-    so it can be pasted into OBS or opened on another device.
+
+        <div
+          id="jview"
+          class="info"
+        >
+          CIVILIAN
+        </div>
+
+
+        <div
+          id="clock"
+          class="clock"
+        >
+          --/--/---- --:--:-- --
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- INFORMATION -->
+
+    <div class="small">
+
+      The generated URL is self-contained.
+      It does not use localStorage and has no expiration timer,
+      so it can be pasted into OBS or opened on another device.
+
+    </div>
+
 
   </div>
 
@@ -530,82 +564,126 @@ button:active {
 
 <script>
 
+
 let generatedUrl = "";
 
 
-/* =========================
+/* =====================================================
    PREVIEW
-========================= */
+===================================================== */
 
 function updatePreview() {
 
   const player =
-    document.getElementById("player").value.trim() || "—";
+    document
+      .getElementById("player")
+      .value
+      .trim() || "—";
+
 
   const job =
-    document.getElementById("job").value.trim() || "CIVILIAN";
+    document
+      .getElementById("job")
+      .value
+      .trim() || "CIVILIAN";
 
-  document.getElementById("pview").textContent =
-    "PLAYER: " + player;
 
-  document.getElementById("jview").textContent =
-    job.toUpperCase();
+  document
+    .getElementById("pview")
+    .textContent =
+      "PLAYER: " + player;
+
+
+  document
+    .getElementById("jview")
+    .textContent =
+      job.toUpperCase();
+
 }
 
 
-/* =========================
+/* =====================================================
    INPUT EVENTS
-========================= */
+===================================================== */
 
 document
   .getElementById("player")
-  .addEventListener("input", updatePreview);
+  .addEventListener(
+    "input",
+    updatePreview
+  );
+
 
 document
   .getElementById("job")
-  .addEventListener("input", updatePreview);
+  .addEventListener(
+    "input",
+    updatePreview
+  );
 
 
-/* =========================
+/* =====================================================
    GENERATE OBS URL
-========================= */
+===================================================== */
 
 function generate() {
 
   const player =
-    document.getElementById("player").value.trim();
+    document
+      .getElementById("player")
+      .value
+      .trim();
+
 
   const job =
-    document.getElementById("job").value.trim() || "CIVILIAN";
+    document
+      .getElementById("job")
+      .value
+      .trim() || "CIVILIAN";
+
 
   if (!player) {
 
-    alert("Please enter a Player Name.");
+    alert(
+      "Please enter a Player Name."
+    );
 
     return;
+
   }
 
 
   const params =
     new URLSearchParams({
+
       player: player,
+
       job: job.toUpperCase()
+
     });
 
 
   generatedUrl =
     new URL(
-      "/overlay.html?" + params.toString(),
+
+      "/overlay.html?" +
+      params.toString(),
+
       window.location.origin
+
     ).href;
 
 
-  document.getElementById("url").textContent =
-    generatedUrl;
+  document
+    .getElementById("url")
+    .textContent =
+      generatedUrl;
 
 
-  document.getElementById("urlbox").style.display =
-    "block";
+  document
+    .getElementById("urlbox")
+    .style.display =
+      "block";
 
 
   document
@@ -618,9 +696,9 @@ function generate() {
 }
 
 
-/* =========================
+/* =====================================================
    COPY URL
-========================= */
+===================================================== */
 
 async function copyUrl() {
 
@@ -628,11 +706,20 @@ async function copyUrl() {
     return;
   }
 
+
   try {
 
-    await navigator.clipboard.writeText(generatedUrl);
+    await navigator
+      .clipboard
+      .writeText(
+        generatedUrl
+      );
 
-    alert("OBS URL copied!");
+
+    alert(
+      "OBS URL copied!"
+    );
+
 
   } catch (e) {
 
@@ -646,48 +733,90 @@ async function copyUrl() {
 }
 
 
-/* =========================
+/* =====================================================
    CLOCK
-========================= */
+===================================================== */
 
 function clock() {
 
-  const now = new Date();
+  const now =
+    new Date();
+
 
   const day =
-    String(now.getDate()).padStart(2, "0");
+    String(
+      now.getDate()
+    ).padStart(
+      2,
+      "0"
+    );
+
 
   const month =
-    String(now.getMonth() + 1).padStart(2, "0");
+    String(
+      now.getMonth() + 1
+    ).padStart(
+      2,
+      "0"
+    );
+
 
   const year =
     now.getFullYear();
 
+
   let hours =
     now.getHours();
 
+
   const minutes =
-    String(now.getMinutes()).padStart(2, "0");
+    String(
+      now.getMinutes()
+    ).padStart(
+      2,
+      "0"
+    );
+
 
   const seconds =
-    String(now.getSeconds()).padStart(2, "0");
+    String(
+      now.getSeconds()
+    ).padStart(
+      2,
+      "0"
+    );
+
 
   const ampm =
-    hours >= 12 ? "PM" : "AM";
+    hours >= 12
+      ? "PM"
+      : "AM";
+
 
   hours =
     hours % 12 || 12;
 
-  document.getElementById("clock").textContent =
-    `${day}/${month}/${year} ${hours}:${minutes}:${seconds} ${ampm}`;
+
+  document
+    .getElementById("clock")
+    .textContent =
+      `${day}/${month}/${year} ` +
+      `${hours}:${minutes}:${seconds} ` +
+      `${ampm}`;
+
 }
 
 
-setInterval(clock, 1000);
+setInterval(
+  clock,
+  1000
+);
+
 
 clock();
 
 updatePreview();
+
 
 </script>
 
