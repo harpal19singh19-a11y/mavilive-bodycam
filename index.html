@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bodycam By MAVILIVE</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#0a0a0a;color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.card{width:min(560px,100%);background:#151515;border:1px solid #333;border-radius:18px;padding:28px;box-shadow:0 20px 60px #000}
+.logo{font-size:30px;font-weight:900;letter-spacing:2px}.logo span{color:#e21b23}
+.sub{color:#aaa;margin:6px 0 24px}.row{margin:15px 0}label{display:block;font-weight:700;margin-bottom:7px}input{width:100%;padding:14px;border-radius:10px;border:1px solid #444;background:#222;color:#fff;font-size:16px}button{width:100%;padding:14px;border:0;border-radius:10px;font-size:16px;font-weight:800;cursor:pointer}.primary{background:#e21b23;color:#fff}.secondary{background:#292929;color:#fff;margin-top:10px}.urlbox{display:none;margin-top:22px}.url{padding:12px;background:#090909;border:1px solid #333;border-radius:10px;word-break:break-all;color:#8ee28e;font-size:13px}.preview{margin-top:22px;padding:18px;background:#000;border:1px solid #333;border-radius:12px}.previewTitle{color:#aaa;font-size:12px;margin-bottom:12px}.bodycam{font-family:monospace;font-weight:700}.rec{color:#ff3030}.small{font-size:12px;color:#888;margin-top:15px;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">BODYCAM <span>BY MAVILIVE</span></div>
+  <div class="sub">Bodycam By MAVILIVE • FiveM Overlay Generator</div>
+
+  <div class="row">
+    <label for="player">Player Name *</label>
+    <input id="player" maxlength="40" placeholder="Enter player name" autocomplete="off">
+  </div>
+
+  <div class="row">
+    <label for="department">Department</label>
+    <input id="department" maxlength="40" placeholder="Leave blank for CIVILIAN" autocomplete="off">
+  </div>
+
+  <button class="primary" onclick="generate()">GENERATE OBS URL</button>
+
+  <div id="urlbox" class="urlbox">
+    <div class="previewTitle">OBS Browser Source URL</div>
+    <div id="url" class="url"></div>
+    <button class="secondary" onclick="copyUrl()">COPY OBS URL</button>
+    <button class="secondary" onclick="generate()">REGENERATE</button>
+  </div>
+
+  <div class="preview">
+    <div class="previewTitle">LIVE PREVIEW</div>
+    <div class="bodycam">
+      <div><span class="rec">● REC</span> <span id="timer">00:00:00</span></div>
+      <div id="clock">--/--/---- --:--:--</div>
+      <div>BODYCAM BY MAVILIVE</div>
+      <div id="pview">PLAYER: —</div>
+      <div id="dview">DEPT: CIVILIAN</div>
+    </div>
+  </div>
+
+  <div class="small">
+    The generated URL is self-contained. It does not use localStorage and has no expiration timer, so it can be pasted into OBS or opened on another device.
+  </div>
+</div>
+
+<script>
+let generatedUrl = "";
+
+function updatePreview(){
+  const p = document.getElementById("player").value.trim() || "—";
+  const d = document.getElementById("department").value.trim() || "CIVILIAN";
+  document.getElementById("pview").textContent = "PLAYER: " + p;
+  document.getElementById("dview").textContent = "DEPT: " + d;
+}
+document.getElementById("player").addEventListener("input", updatePreview);
+document.getElementById("department").addEventListener("input", updatePreview);
+
+function generate(){
+  const player = document.getElementById("player").value.trim();
+  const department = document.getElementById("department").value.trim() || "CIVILIAN";
+  if(!player){ alert("Please enter a Player Name."); return; }
+
+  const start = Date.now();
+  const params = new URLSearchParams({
+    player,
+    department,
+    start: String(start)
+  });
+
+  generatedUrl = new URL("/overlay.html?" + params.toString(), window.location.origin).href;
+  document.getElementById("url").textContent = generatedUrl;
+  document.getElementById("urlbox").style.display = "block";
+  document.getElementById("urlbox").scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+async function copyUrl(){
+  if(!generatedUrl) return;
+  try{
+    await navigator.clipboard.writeText(generatedUrl);
+    alert("OBS URL copied!");
+  }catch(e){
+    prompt("Copy this OBS URL:", generatedUrl);
+  }
+}
+
+function clock(){
+  const now = new Date();
+  document.getElementById("clock").textContent =
+    now.toLocaleDateString() + " " + now.toLocaleTimeString();
+}
+setInterval(clock,1000); clock();
+
+let previewStart = Date.now();
+function timer(){
+  const s = Math.floor((Date.now()-previewStart)/1000);
+  const h = String(Math.floor(s/3600)).padStart(2,"0");
+  const m = String(Math.floor((s%3600)/60)).padStart(2,"0");
+  const sec = String(s%60).padStart(2,"0");
+  document.getElementById("timer").textContent = h+":"+m+":"+sec;
+}
+setInterval(timer,1000); timer();
+</script>
+</body>
+</html>
