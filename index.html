@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
+
 * {
   box-sizing: border-box;
 }
@@ -124,8 +126,9 @@ button {
   margin-bottom: 12px;
 }
 
+
 /* =========================
-   BODYCAM LIVE PREVIEW
+   BODYCAM
 ========================= */
 
 .bodycam {
@@ -140,7 +143,9 @@ button {
     0 3px 7px rgba(0,0,0,.95);
 }
 
-/* ● REC   BODYCAM */
+
+/* REC + BODYCAM */
+
 .top-line {
   display: flex;
   align-items: center;
@@ -166,23 +171,31 @@ button {
   letter-spacing: 2px;
 }
 
-/* PLAYER / DEPT */
+
+/* PLAYER / JOB */
+
 .info {
   font-size: 15px;
   margin-top: 4px;
 }
 
-/* LIVE DATE / TIME */
+
+/* CLOCK */
+
 .clock {
   font-size: 17px;
   font-weight: 800;
   margin-top: 6px;
 }
 
+
 /* REC BLINK */
+
 @keyframes recBlink {
+
   0%, 45% {
     opacity: 1;
+
     text-shadow:
       0 0 4px #ff3030,
       0 0 8px #ff3030,
@@ -192,9 +205,11 @@ button {
 
   50%, 100% {
     opacity: .25;
+
     text-shadow:
       2px 2px 0 #000;
   }
+
 }
 
 .small {
@@ -203,6 +218,7 @@ button {
   margin-top: 15px;
   line-height: 1.5;
 }
+
 </style>
 </head>
 
@@ -211,6 +227,7 @@ button {
 <div class="card">
 
   <!-- HEADER -->
+
   <div class="logo">
     BODYCAM <span>BY MAVILIVE</span>
   </div>
@@ -219,8 +236,11 @@ button {
     Bodycam By MAVILIVE • FiveM Overlay Generator
   </div>
 
+
   <!-- PLAYER -->
+
   <div class="row">
+
     <label for="player">
       Player Name *
     </label>
@@ -231,23 +251,12 @@ button {
       placeholder="Enter player name"
       autocomplete="off"
     >
+
   </div>
 
-  <!-- DEPARTMENT -->
-  <div class="row">
-    <label for="department">
-      Department
-    </label>
-
-    <input
-      id="department"
-      maxlength="40"
-      placeholder="Leave blank for CIVILIAN"
-      autocomplete="off"
-    >
-  </div>
 
   <!-- GENERATE -->
+
   <button
     class="primary"
     onclick="generate()"
@@ -255,7 +264,9 @@ button {
     GENERATE OBS URL
   </button>
 
+
   <!-- URL BOX -->
+
   <div id="urlbox" class="urlbox">
 
     <div class="previewTitle">
@@ -280,7 +291,9 @@ button {
 
   </div>
 
+
   <!-- LIVE PREVIEW -->
+
   <div class="preview">
 
     <div class="previewTitle">
@@ -290,7 +303,9 @@ button {
     <div class="bodycam">
 
       <!-- LINE 1 -->
+
       <div class="top-line">
+
         <span class="rec">
           <span class="rec-dot">●</span> REC
         </span>
@@ -298,38 +313,52 @@ button {
         <span class="brand">
           BODYCAM
         </span>
+
       </div>
 
+
       <!-- LINE 2 -->
+
       <div id="pview" class="info">
         PLAYER: —
       </div>
 
+
       <!-- LINE 3 -->
-      <div id="dview" class="info">
-        DEPT: CIVILIAN
+
+      <div id="jview" class="info">
+        CIVILIAN
       </div>
 
+
       <!-- LINE 4 -->
+
       <div id="clock" class="clock">
         --/--/---- --:--:-- --
       </div>
 
     </div>
+
   </div>
 
+
   <!-- INFORMATION -->
+
   <div class="small">
-    The generated URL is self-contained. It does not use localStorage
-    and has no expiration timer, so it can be pasted into OBS or opened
-    on another device.
+
+    The generated URL is self-contained.
+    It does not use localStorage and has no expiration timer,
+    so it can be pasted into OBS or opened on another device.
+
   </div>
 
 </div>
 
+
 <script>
 
 let generatedUrl = "";
+
 
 /* =========================
    LIVE PREVIEW
@@ -340,22 +369,16 @@ function updatePreview() {
   const player =
     document.getElementById("player").value.trim() || "—";
 
-  const department =
-    document.getElementById("department").value.trim() || "CIVILIAN";
-
   document.getElementById("pview").textContent =
     "PLAYER: " + player;
 
-  document.getElementById("dview").textContent =
-    "DEPT: " + department;
 }
+
+
+/* PLAYER INPUT */
 
 document
   .getElementById("player")
-  .addEventListener("input", updatePreview);
-
-document
-  .getElementById("department")
   .addEventListener("input", updatePreview);
 
 
@@ -368,25 +391,28 @@ function generate() {
   const player =
     document.getElementById("player").value.trim();
 
-  const department =
-    document.getElementById("department").value.trim() || "CIVILIAN";
 
   if (!player) {
+
     alert("Please enter a Player Name.");
+
     return;
+
   }
 
+
   /*
-    No start timestamp.
-    No countdown.
-    No recording timer.
+    Job defaults to CIVILIAN.
+    A FiveM resource can later replace this
+    with the player's actual job.
   */
 
   const params =
     new URLSearchParams({
       player: player,
-      department: department
+      job: "CIVILIAN"
     });
+
 
   generatedUrl =
     new URL(
@@ -394,11 +420,14 @@ function generate() {
       window.location.origin
     ).href;
 
+
   document.getElementById("url").textContent =
     generatedUrl;
 
+
   document.getElementById("urlbox").style.display =
     "block";
+
 
   document
     .getElementById("urlbox")
@@ -406,6 +435,7 @@ function generate() {
       behavior: "smooth",
       block: "center"
     });
+
 }
 
 
@@ -418,6 +448,7 @@ async function copyUrl() {
   if (!generatedUrl) {
     return;
   }
+
 
   try {
 
@@ -433,52 +464,76 @@ async function copyUrl() {
     );
 
   }
+
 }
 
 
 /* =========================
    LIVE DATE / TIME
-   FORMAT:
-   DD/MM/YYYY 7:23:00 PM
 ========================= */
 
 function clock() {
 
   const now = new Date();
 
+
   const day =
     String(now.getDate()).padStart(2, "0");
+
 
   const month =
     String(now.getMonth() + 1).padStart(2, "0");
 
+
   const year =
     now.getFullYear();
+
 
   let hours =
     now.getHours();
 
+
   const minutes =
     String(now.getMinutes()).padStart(2, "0");
+
 
   const seconds =
     String(now.getSeconds()).padStart(2, "0");
 
+
   const ampm =
     hours >= 12 ? "PM" : "AM";
+
 
   hours =
     hours % 12 || 12;
 
+
   document.getElementById("clock").textContent =
     `${day}/${month}/${year} ${hours}:${minutes}:${seconds} ${ampm}`;
+
 }
+
 
 setInterval(clock, 1000);
 
 clock();
 
+updatePreview();
+
 </script>
 
 </body>
 </html>
+```
+
+This version has **no Job input**. The generated overlay displays:
+
+```text
+● REC  BODYCAM
+PLAYER: Mavi
+CIVILIAN
+23/09/2026 10:30:00 PM
+```
+
+If you want **POLICE/EMS/etc. to automatically change based on the player's actual FiveM job**, the next part needs to be a small FiveM client/server resource; the website alone cannot read the FiveM player's job.
