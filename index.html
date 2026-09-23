@@ -128,7 +128,7 @@ button {
 
 
 /* =========================
-   BODYCAM
+   BODYCAM LIVE PREVIEW
 ========================= */
 
 .bodycam {
@@ -144,7 +144,7 @@ button {
 }
 
 
-/* REC + BODYCAM */
+/* ● REC   BODYCAM */
 
 .top-line {
   display: flex;
@@ -180,7 +180,7 @@ button {
 }
 
 
-/* CLOCK */
+/* LIVE DATE / TIME */
 
 .clock {
   font-size: 17px;
@@ -249,6 +249,24 @@ button {
       id="player"
       maxlength="40"
       placeholder="Enter player name"
+      autocomplete="off"
+    >
+
+  </div>
+
+
+  <!-- JOB -->
+
+  <div class="row">
+
+    <label for="job">
+      Job
+    </label>
+
+    <input
+      id="job"
+      maxlength="40"
+      placeholder="Leave blank for CIVILIAN"
       autocomplete="off"
     >
 
@@ -369,8 +387,16 @@ function updatePreview() {
   const player =
     document.getElementById("player").value.trim() || "—";
 
+  const job =
+    document.getElementById("job").value.trim() || "CIVILIAN";
+
+
   document.getElementById("pview").textContent =
     "PLAYER: " + player;
+
+
+  document.getElementById("jview").textContent =
+    job.toUpperCase();
 
 }
 
@@ -379,6 +405,13 @@ function updatePreview() {
 
 document
   .getElementById("player")
+  .addEventListener("input", updatePreview);
+
+
+/* JOB INPUT */
+
+document
+  .getElementById("job")
   .addEventListener("input", updatePreview);
 
 
@@ -392,6 +425,10 @@ function generate() {
     document.getElementById("player").value.trim();
 
 
+  const job =
+    document.getElementById("job").value.trim() || "CIVILIAN";
+
+
   if (!player) {
 
     alert("Please enter a Player Name.");
@@ -402,15 +439,16 @@ function generate() {
 
 
   /*
-    Job defaults to CIVILIAN.
-    A FiveM resource can later replace this
-    with the player's actual job.
+    No start timestamp.
+    No countdown.
+    No recording timer.
   */
+
 
   const params =
     new URLSearchParams({
       player: player,
-      job: "CIVILIAN"
+      job: job.toUpperCase()
     });
 
 
@@ -470,6 +508,8 @@ async function copyUrl() {
 
 /* =========================
    LIVE DATE / TIME
+   FORMAT:
+   DD/MM/YYYY 7:23:00 PM
 ========================= */
 
 function clock() {
@@ -525,15 +565,22 @@ updatePreview();
 
 </body>
 </html>
+
 ```
 
-This version has **no Job input**. The generated overlay displays:
+Now if they enter:
+
+**Player Name:** `Mavi`
+**Job:** `POLICE`
+
+the preview becomes:
 
 ```text
-● REC  BODYCAM
+● REC   BODYCAM
 PLAYER: Mavi
-CIVILIAN
+POLICE
 23/09/2026 10:30:00 PM
+
 ```
 
-If you want **POLICE/EMS/etc. to automatically change based on the player's actual FiveM job**, the next part needs to be a small FiveM client/server resource; the website alone cannot read the FiveM player's job.
+And the generated OBS URL will contain `job=POLICE`, not `department=POLICE`.  same here
