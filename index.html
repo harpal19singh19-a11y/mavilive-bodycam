@@ -30,12 +30,12 @@ body {
 
   min-height: 100vh;
 
-  /* MOVED TO LEFT SIDE */
+  /* CENTER OF WEB PAGE */
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
 
-  padding: 40px;
+  padding: 20px;
 }
 
 
@@ -85,7 +85,7 @@ body {
 
 
 /* =========================
-   FORM ROW
+   FORM
 ========================= */
 
 .row {
@@ -94,16 +94,9 @@ body {
 
 label {
   display: block;
-
   font-weight: 700;
-
   margin-bottom: 7px;
 }
-
-
-/* =========================
-   INPUT
-========================= */
 
 input {
   width: 100%;
@@ -123,10 +116,6 @@ input {
   font-size: 16px;
 
   outline: none;
-
-  transition:
-    border-color .2s,
-    box-shadow .2s;
 }
 
 input:focus {
@@ -158,9 +147,7 @@ button {
 
   cursor: pointer;
 
-  transition:
-    transform .15s,
-    opacity .15s;
+  transition: .15s;
 }
 
 button:hover {
@@ -171,21 +158,14 @@ button:active {
   transform: scale(.98);
 }
 
-
-/* PRIMARY BUTTON */
-
 .primary {
   background: #e21b23;
   color: #fff;
 }
 
-
-/* SECONDARY BUTTON */
-
 .secondary {
   background: #292929;
   color: #fff;
-
   margin-top: 10px;
 }
 
@@ -196,7 +176,6 @@ button:active {
 
 .urlbox {
   display: none;
-
   margin-top: 22px;
 }
 
@@ -245,7 +224,7 @@ button:active {
 
 
 /* =========================
-   BODYCAM PREVIEW
+   BODYCAM
 ========================= */
 
 .bodycam {
@@ -258,7 +237,6 @@ button:active {
     -2px -2px 0 #000,
     2px -2px 0 #000,
     -2px 2px 0 #000,
-
     0 2px 3px rgba(0,0,0,.95),
     0 4px 8px rgba(0,0,0,.75),
     0 7px 14px rgba(0,0,0,.50);
@@ -281,11 +259,6 @@ button:active {
   font-weight: 900;
 }
 
-
-/* =========================
-   REC
-========================= */
-
 .rec {
   color: #ff3030;
 }
@@ -297,11 +270,6 @@ button:active {
 
   animation: recBlink 1s infinite;
 }
-
-
-/* =========================
-   BODYCAM BRAND
-========================= */
 
 .brand {
   color: #fff;
@@ -320,7 +288,6 @@ button:active {
 
 .info {
   font-size: 15px;
-
   margin-top: 4px;
 }
 
@@ -354,7 +321,6 @@ button:active {
       0 0 8px #ff3030,
       0 0 14px #ff3030,
       2px 2px 0 #000;
-
   }
 
   50%,
@@ -364,14 +330,13 @@ button:active {
 
     text-shadow:
       2px 2px 0 #000;
-
   }
 
 }
 
 
 /* =========================
-   INFORMATION
+   INFO
 ========================= */
 
 .small {
@@ -392,7 +357,7 @@ button:active {
 @media (max-width: 650px) {
 
   body {
-    padding: 20px;
+    padding: 15px;
   }
 
   .card {
@@ -408,16 +373,9 @@ button:active {
 </style>
 </head>
 
-
 <body>
 
-
 <div class="card">
-
-
-  <!-- =========================
-       HEADER
-  ========================== -->
 
   <div class="logo">
     BODYCAM <span>BY MAVILIVE</span>
@@ -428,9 +386,7 @@ button:active {
   </div>
 
 
-  <!-- =========================
-       PLAYER
-  ========================== -->
+  <!-- PLAYER -->
 
   <div class="row">
 
@@ -448,9 +404,7 @@ button:active {
   </div>
 
 
-  <!-- =========================
-       JOB
-  ========================== -->
+  <!-- JOB -->
 
   <div class="row">
 
@@ -468,9 +422,7 @@ button:active {
   </div>
 
 
-  <!-- =========================
-       GENERATE
-  ========================== -->
+  <!-- GENERATE -->
 
   <button
     class="primary"
@@ -480,9 +432,7 @@ button:active {
   </button>
 
 
-  <!-- =========================
-       URL BOX
-  ========================== -->
+  <!-- URL -->
 
   <div
     id="urlbox"
@@ -498,14 +448,12 @@ button:active {
       class="url"
     ></div>
 
-
     <button
       class="secondary"
       onclick="copyUrl()"
     >
       COPY OBS URL
     </button>
-
 
     <button
       class="secondary"
@@ -517,9 +465,7 @@ button:active {
   </div>
 
 
-  <!-- =========================
-       LIVE PREVIEW
-  ========================== -->
+  <!-- PREVIEW -->
 
   <div class="preview">
 
@@ -527,24 +473,14 @@ button:active {
       LIVE PREVIEW
     </div>
 
-
     <div class="bodycam">
-
-
-      <!-- LINE 1 -->
 
       <div class="top-line">
 
         <span class="rec">
-
-          <span class="rec-dot">
-            ●
-          </span>
-
+          <span class="rec-dot">●</span>
           REC
-
         </span>
-
 
         <span class="brand">
           BODYCAM
@@ -552,8 +488,6 @@ button:active {
 
       </div>
 
-
-      <!-- LINE 2 -->
 
       <div
         id="pview"
@@ -563,8 +497,6 @@ button:active {
       </div>
 
 
-      <!-- LINE 3 -->
-
       <div
         id="jview"
         class="info"
@@ -573,8 +505,6 @@ button:active {
       </div>
 
 
-      <!-- LINE 4 -->
-
       <div
         id="clock"
         class="clock"
@@ -582,15 +512,10 @@ button:active {
         --/--/---- --:--:-- --
       </div>
 
-
     </div>
 
   </div>
 
-
-  <!-- =========================
-       INFORMATION
-  ========================== -->
 
   <div class="small">
 
@@ -600,72 +525,45 @@ button:active {
 
   </div>
 
-
 </div>
 
 
 <script>
 
-
 let generatedUrl = "";
 
 
 /* =========================
-   LIVE PREVIEW
+   PREVIEW
 ========================= */
 
 function updatePreview() {
 
   const player =
-    document
-      .getElementById("player")
-      .value
-      .trim() || "—";
-
+    document.getElementById("player").value.trim() || "—";
 
   const job =
-    document
-      .getElementById("job")
-      .value
-      .trim() || "CIVILIAN";
+    document.getElementById("job").value.trim() || "CIVILIAN";
 
+  document.getElementById("pview").textContent =
+    "PLAYER: " + player;
 
-  document
-    .getElementById("pview")
-    .textContent =
-      "PLAYER: " + player;
-
-
-  document
-    .getElementById("jview")
-    .textContent =
-      job.toUpperCase();
-
+  document.getElementById("jview").textContent =
+    job.toUpperCase();
 }
 
 
 /* =========================
-   PLAYER INPUT
+   INPUT EVENTS
 ========================= */
 
 document
   .getElementById("player")
-  .addEventListener(
-    "input",
-    updatePreview
-  );
-
-
-/* =========================
-   JOB INPUT
-========================= */
+  .addEventListener("input", updatePreview);
 
 document
   .getElementById("job")
-  .addEventListener(
-    "input",
-    updatePreview
-  );
+  .addEventListener("input", updatePreview);
 
 
 /* =========================
@@ -674,81 +572,47 @@ document
 
 function generate() {
 
-
   const player =
-    document
-      .getElementById("player")
-      .value
-      .trim();
-
+    document.getElementById("player").value.trim();
 
   const job =
-    document
-      .getElementById("job")
-      .value
-      .trim() || "CIVILIAN";
-
+    document.getElementById("job").value.trim() || "CIVILIAN";
 
   if (!player) {
 
-    alert(
-      "Please enter a Player Name."
-    );
+    alert("Please enter a Player Name.");
 
     return;
-
   }
-
-
-  /*
-    No timestamp.
-    No countdown.
-    No recording timer.
-    URL does not expire.
-  */
 
 
   const params =
     new URLSearchParams({
-
       player: player,
-
       job: job.toUpperCase()
-
     });
 
 
   generatedUrl =
     new URL(
-
-      "/overlay.html?" +
-      params.toString(),
-
+      "/overlay.html?" + params.toString(),
       window.location.origin
-
     ).href;
 
 
-  document
-    .getElementById("url")
-    .textContent =
-      generatedUrl;
+  document.getElementById("url").textContent =
+    generatedUrl;
 
 
-  document
-    .getElementById("urlbox")
-    .style.display =
-      "block";
+  document.getElementById("urlbox").style.display =
+    "block";
 
 
   document
     .getElementById("urlbox")
     .scrollIntoView({
-
       behavior: "smooth",
-
       block: "center"
-
     });
 
 }
@@ -760,35 +624,22 @@ function generate() {
 
 async function copyUrl() {
 
-
   if (!generatedUrl) {
     return;
   }
 
-
   try {
 
+    await navigator.clipboard.writeText(generatedUrl);
 
-    await navigator
-      .clipboard
-      .writeText(
-        generatedUrl
-      );
-
-
-    alert(
-      "OBS URL copied!"
-    );
-
+    alert("OBS URL copied!");
 
   } catch (e) {
-
 
     prompt(
       "Copy this OBS URL:",
       generatedUrl
     );
-
 
   }
 
@@ -796,94 +647,49 @@ async function copyUrl() {
 
 
 /* =========================
-   LIVE DATE / TIME
+   CLOCK
 ========================= */
 
 function clock() {
 
-
-  const now =
-    new Date();
-
+  const now = new Date();
 
   const day =
-    String(
-      now.getDate()
-    ).padStart(
-      2,
-      "0"
-    );
-
+    String(now.getDate()).padStart(2, "0");
 
   const month =
-    String(
-      now.getMonth() + 1
-    ).padStart(
-      2,
-      "0"
-    );
-
+    String(now.getMonth() + 1).padStart(2, "0");
 
   const year =
     now.getFullYear();
 
-
   let hours =
     now.getHours();
 
-
   const minutes =
-    String(
-      now.getMinutes()
-    ).padStart(
-      2,
-      "0"
-    );
-
+    String(now.getMinutes()).padStart(2, "0");
 
   const seconds =
-    String(
-      now.getSeconds()
-    ).padStart(
-      2,
-      "0"
-    );
-
+    String(now.getSeconds()).padStart(2, "0");
 
   const ampm =
-    hours >= 12
-      ? "PM"
-      : "AM";
-
+    hours >= 12 ? "PM" : "AM";
 
   hours =
     hours % 12 || 12;
 
-
-  document
-    .getElementById("clock")
-    .textContent =
-
-      `${day}/${month}/${year} ` +
-      `${hours}:${minutes}:${seconds} ` +
-      `${ampm}`;
-
+  document.getElementById("clock").textContent =
+    `${day}/${month}/${year} ${hours}:${minutes}:${seconds} ${ampm}`;
 }
 
 
-setInterval(
-  clock,
-  1000
-);
-
+setInterval(clock, 1000);
 
 clock();
 
 updatePreview();
 
-
 </script>
-
 
 </body>
 </html>
