@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,26 +16,52 @@
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
   font-family: 'Roboto Condensed', Arial, sans-serif;
   background: #0a0a0a;
   color: #fff;
+
   min-height: 100vh;
+
+  /* MOVED TO LEFT SIDE */
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  padding: 40px;
 }
+
+
+/* =========================
+   MAIN CARD
+========================= */
 
 .card {
   width: min(560px, 100%);
+
   background: #151515;
+
   border: 1px solid #333;
+
   border-radius: 18px;
+
   padding: 28px;
-  box-shadow: 0 20px 60px #000;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.9);
 }
+
+
+/* =========================
+   LOGO
+========================= */
 
 .logo {
   font-size: 30px;
@@ -48,10 +73,20 @@ body {
   color: #e21b23;
 }
 
+
+/* =========================
+   SUBTITLE
+========================= */
+
 .sub {
   color: #aaa;
   margin: 6px 0 24px;
 }
+
+
+/* =========================
+   FORM ROW
+========================= */
 
 .row {
   margin: 15px 0;
@@ -59,80 +94,163 @@ body {
 
 label {
   display: block;
+
   font-weight: 700;
+
   margin-bottom: 7px;
 }
 
+
+/* =========================
+   INPUT
+========================= */
+
 input {
   width: 100%;
+
   padding: 14px;
+
   border-radius: 10px;
+
   border: 1px solid #444;
+
   background: #222;
+
   color: #fff;
+
   font-family: 'Roboto Condensed', Arial, sans-serif;
+
   font-size: 16px;
+
+  outline: none;
+
+  transition:
+    border-color .2s,
+    box-shadow .2s;
 }
+
+input:focus {
+  border-color: #e21b23;
+
+  box-shadow:
+    0 0 0 2px rgba(226,27,35,.15);
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
 
 button {
   width: 100%;
+
   padding: 14px;
+
   border: 0;
+
   border-radius: 10px;
+
   font-family: 'Roboto Condensed', Arial, sans-serif;
+
   font-size: 16px;
+
   font-weight: 800;
+
   cursor: pointer;
+
+  transition:
+    transform .15s,
+    opacity .15s;
 }
+
+button:hover {
+  opacity: .9;
+}
+
+button:active {
+  transform: scale(.98);
+}
+
+
+/* PRIMARY BUTTON */
 
 .primary {
   background: #e21b23;
   color: #fff;
 }
 
+
+/* SECONDARY BUTTON */
+
 .secondary {
   background: #292929;
   color: #fff;
+
   margin-top: 10px;
 }
 
+
+/* =========================
+   URL BOX
+========================= */
+
 .urlbox {
   display: none;
+
   margin-top: 22px;
 }
 
 .url {
   padding: 12px;
+
   background: #090909;
+
   border: 1px solid #333;
+
   border-radius: 10px;
+
   word-break: break-all;
+
   color: #8ee28e;
+
   font-family: monospace;
+
   font-size: 13px;
 }
 
+
+/* =========================
+   PREVIEW
+========================= */
+
 .preview {
   margin-top: 22px;
+
   padding: 18px;
+
   background: #000;
+
   border: 1px solid #333;
+
   border-radius: 12px;
 }
 
 .previewTitle {
   color: #aaa;
+
   font-size: 12px;
+
   margin-bottom: 12px;
 }
 
 
 /* =========================
-   BODYCAM LIVE PREVIEW
+   BODYCAM PREVIEW
 ========================= */
 
 .bodycam {
   font-family: 'Roboto Condensed', Arial, sans-serif;
+
   font-weight: 800;
 
   text-shadow:
@@ -140,19 +258,33 @@ button {
     -2px -2px 0 #000,
     2px -2px 0 #000,
     -2px 2px 0 #000,
-    0 3px 7px rgba(0,0,0,.95);
+
+    0 2px 3px rgba(0,0,0,.95),
+    0 4px 8px rgba(0,0,0,.75),
+    0 7px 14px rgba(0,0,0,.50);
 }
 
 
-/* ● REC   BODYCAM */
+/* =========================
+   TOP LINE
+========================= */
 
 .top-line {
   display: flex;
+
   align-items: center;
+
   gap: 14px;
+
   font-size: 18px;
+
   font-weight: 900;
 }
+
+
+/* =========================
+   REC
+========================= */
 
 .rec {
   color: #ff3030;
@@ -160,40 +292,61 @@ button {
 
 .rec-dot {
   display: inline-block;
+
   color: #ff3030;
+
   animation: recBlink 1s infinite;
 }
 
+
+/* =========================
+   BODYCAM BRAND
+========================= */
+
 .brand {
   color: #fff;
+
   font-size: 18px;
+
   font-weight: 900;
+
   letter-spacing: 2px;
 }
 
 
-/* PLAYER / JOB */
+/* =========================
+   PLAYER / JOB
+========================= */
 
 .info {
   font-size: 15px;
+
   margin-top: 4px;
 }
 
 
-/* LIVE DATE / TIME */
+/* =========================
+   CLOCK
+========================= */
 
 .clock {
   font-size: 17px;
+
   font-weight: 800;
+
   margin-top: 6px;
 }
 
 
-/* REC BLINK */
+/* =========================
+   REC BLINK
+========================= */
 
 @keyframes recBlink {
 
-  0%, 45% {
+  0%,
+  45% {
+
     opacity: 1;
 
     text-shadow:
@@ -201,32 +354,70 @@ button {
       0 0 8px #ff3030,
       0 0 14px #ff3030,
       2px 2px 0 #000;
+
   }
 
-  50%, 100% {
+  50%,
+  100% {
+
     opacity: .25;
 
     text-shadow:
       2px 2px 0 #000;
+
   }
 
 }
 
+
+/* =========================
+   INFORMATION
+========================= */
+
 .small {
   font-size: 12px;
+
   color: #888;
+
   margin-top: 15px;
+
   line-height: 1.5;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+  body {
+    padding: 20px;
+  }
+
+  .card {
+    padding: 22px;
+  }
+
+  .logo {
+    font-size: 25px;
+  }
+
 }
 
 </style>
 </head>
 
+
 <body>
+
 
 <div class="card">
 
-  <!-- HEADER -->
+
+  <!-- =========================
+       HEADER
+  ========================== -->
 
   <div class="logo">
     BODYCAM <span>BY MAVILIVE</span>
@@ -237,7 +428,9 @@ button {
   </div>
 
 
-  <!-- PLAYER -->
+  <!-- =========================
+       PLAYER
+  ========================== -->
 
   <div class="row">
 
@@ -255,7 +448,9 @@ button {
   </div>
 
 
-  <!-- JOB -->
+  <!-- =========================
+       JOB
+  ========================== -->
 
   <div class="row">
 
@@ -273,7 +468,9 @@ button {
   </div>
 
 
-  <!-- GENERATE -->
+  <!-- =========================
+       GENERATE
+  ========================== -->
 
   <button
     class="primary"
@@ -283,15 +480,24 @@ button {
   </button>
 
 
-  <!-- URL BOX -->
+  <!-- =========================
+       URL BOX
+  ========================== -->
 
-  <div id="urlbox" class="urlbox">
+  <div
+    id="urlbox"
+    class="urlbox"
+  >
 
     <div class="previewTitle">
       OBS Browser Source URL
     </div>
 
-    <div id="url" class="url"></div>
+    <div
+      id="url"
+      class="url"
+    ></div>
+
 
     <button
       class="secondary"
@@ -299,6 +505,7 @@ button {
     >
       COPY OBS URL
     </button>
+
 
     <button
       class="secondary"
@@ -310,7 +517,9 @@ button {
   </div>
 
 
-  <!-- LIVE PREVIEW -->
+  <!-- =========================
+       LIVE PREVIEW
+  ========================== -->
 
   <div class="preview">
 
@@ -318,15 +527,24 @@ button {
       LIVE PREVIEW
     </div>
 
+
     <div class="bodycam">
+
 
       <!-- LINE 1 -->
 
       <div class="top-line">
 
         <span class="rec">
-          <span class="rec-dot">●</span> REC
+
+          <span class="rec-dot">
+            ●
+          </span>
+
+          REC
+
         </span>
+
 
         <span class="brand">
           BODYCAM
@@ -337,30 +555,42 @@ button {
 
       <!-- LINE 2 -->
 
-      <div id="pview" class="info">
+      <div
+        id="pview"
+        class="info"
+      >
         PLAYER: —
       </div>
 
 
       <!-- LINE 3 -->
 
-      <div id="jview" class="info">
+      <div
+        id="jview"
+        class="info"
+      >
         CIVILIAN
       </div>
 
 
       <!-- LINE 4 -->
 
-      <div id="clock" class="clock">
+      <div
+        id="clock"
+        class="clock"
+      >
         --/--/---- --:--:-- --
       </div>
+
 
     </div>
 
   </div>
 
 
-  <!-- INFORMATION -->
+  <!-- =========================
+       INFORMATION
+  ========================== -->
 
   <div class="small">
 
@@ -370,10 +600,12 @@ button {
 
   </div>
 
+
 </div>
 
 
 <script>
+
 
 let generatedUrl = "";
 
@@ -385,34 +617,55 @@ let generatedUrl = "";
 function updatePreview() {
 
   const player =
-    document.getElementById("player").value.trim() || "—";
+    document
+      .getElementById("player")
+      .value
+      .trim() || "—";
+
 
   const job =
-    document.getElementById("job").value.trim() || "CIVILIAN";
+    document
+      .getElementById("job")
+      .value
+      .trim() || "CIVILIAN";
 
 
-  document.getElementById("pview").textContent =
-    "PLAYER: " + player;
+  document
+    .getElementById("pview")
+    .textContent =
+      "PLAYER: " + player;
 
 
-  document.getElementById("jview").textContent =
-    job.toUpperCase();
+  document
+    .getElementById("jview")
+    .textContent =
+      job.toUpperCase();
 
 }
 
 
-/* PLAYER INPUT */
+/* =========================
+   PLAYER INPUT
+========================= */
 
 document
   .getElementById("player")
-  .addEventListener("input", updatePreview);
+  .addEventListener(
+    "input",
+    updatePreview
+  );
 
 
-/* JOB INPUT */
+/* =========================
+   JOB INPUT
+========================= */
 
 document
   .getElementById("job")
-  .addEventListener("input", updatePreview);
+  .addEventListener(
+    "input",
+    updatePreview
+  );
 
 
 /* =========================
@@ -421,17 +674,26 @@ document
 
 function generate() {
 
+
   const player =
-    document.getElementById("player").value.trim();
+    document
+      .getElementById("player")
+      .value
+      .trim();
 
 
   const job =
-    document.getElementById("job").value.trim() || "CIVILIAN";
+    document
+      .getElementById("job")
+      .value
+      .trim() || "CIVILIAN";
 
 
   if (!player) {
 
-    alert("Please enter a Player Name.");
+    alert(
+      "Please enter a Player Name."
+    );
 
     return;
 
@@ -439,39 +701,54 @@ function generate() {
 
 
   /*
-    No start timestamp.
+    No timestamp.
     No countdown.
     No recording timer.
+    URL does not expire.
   */
 
 
   const params =
     new URLSearchParams({
+
       player: player,
+
       job: job.toUpperCase()
+
     });
 
 
   generatedUrl =
     new URL(
-      "/overlay.html?" + params.toString(),
+
+      "/overlay.html?" +
+      params.toString(),
+
       window.location.origin
+
     ).href;
 
 
-  document.getElementById("url").textContent =
-    generatedUrl;
+  document
+    .getElementById("url")
+    .textContent =
+      generatedUrl;
 
 
-  document.getElementById("urlbox").style.display =
-    "block";
+  document
+    .getElementById("urlbox")
+    .style.display =
+      "block";
 
 
   document
     .getElementById("urlbox")
     .scrollIntoView({
+
       behavior: "smooth",
+
       block: "center"
+
     });
 
 }
@@ -483,6 +760,7 @@ function generate() {
 
 async function copyUrl() {
 
+
   if (!generatedUrl) {
     return;
   }
@@ -490,16 +768,27 @@ async function copyUrl() {
 
   try {
 
-    await navigator.clipboard.writeText(generatedUrl);
 
-    alert("OBS URL copied!");
+    await navigator
+      .clipboard
+      .writeText(
+        generatedUrl
+      );
+
+
+    alert(
+      "OBS URL copied!"
+    );
+
 
   } catch (e) {
+
 
     prompt(
       "Copy this OBS URL:",
       generatedUrl
     );
+
 
   }
 
@@ -508,21 +797,31 @@ async function copyUrl() {
 
 /* =========================
    LIVE DATE / TIME
-   FORMAT:
-   DD/MM/YYYY 7:23:00 PM
 ========================= */
 
 function clock() {
 
-  const now = new Date();
+
+  const now =
+    new Date();
 
 
   const day =
-    String(now.getDate()).padStart(2, "0");
+    String(
+      now.getDate()
+    ).padStart(
+      2,
+      "0"
+    );
 
 
   const month =
-    String(now.getMonth() + 1).padStart(2, "0");
+    String(
+      now.getMonth() + 1
+    ).padStart(
+      2,
+      "0"
+    );
 
 
   const year =
@@ -534,53 +833,57 @@ function clock() {
 
 
   const minutes =
-    String(now.getMinutes()).padStart(2, "0");
+    String(
+      now.getMinutes()
+    ).padStart(
+      2,
+      "0"
+    );
 
 
   const seconds =
-    String(now.getSeconds()).padStart(2, "0");
+    String(
+      now.getSeconds()
+    ).padStart(
+      2,
+      "0"
+    );
 
 
   const ampm =
-    hours >= 12 ? "PM" : "AM";
+    hours >= 12
+      ? "PM"
+      : "AM";
 
 
   hours =
     hours % 12 || 12;
 
 
-  document.getElementById("clock").textContent =
-    `${day}/${month}/${year} ${hours}:${minutes}:${seconds} ${ampm}`;
+  document
+    .getElementById("clock")
+    .textContent =
+
+      `${day}/${month}/${year} ` +
+      `${hours}:${minutes}:${seconds} ` +
+      `${ampm}`;
 
 }
 
 
-setInterval(clock, 1000);
+setInterval(
+  clock,
+  1000
+);
+
 
 clock();
 
 updatePreview();
 
+
 </script>
+
 
 </body>
 </html>
-
-```
-
-Now if they enter:
-
-**Player Name:** `Mavi`
-**Job:** `POLICE`
-
-the preview becomes:
-
-```text
-● REC   BODYCAM
-PLAYER: Mavi
-POLICE
-23/09/2026 10:30:00 PM
-
-```
-
-And the generated OBS URL will contain `job=POLICE`, not `department=POLICE`.  same here
