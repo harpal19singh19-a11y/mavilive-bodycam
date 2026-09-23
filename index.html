@@ -25,17 +25,21 @@ body {
 
 body {
   font-family: 'Roboto Condensed', Arial, sans-serif;
+
   background: #0a0a0a;
+
   color: #fff;
+
   overflow: auto;
 }
 
 
 /* =====================================================
-   FORCE CARD TO EXACT CENTER OF WEBPAGE
+   CENTER CONTAINER
 ===================================================== */
 
 .page-center {
+
   position: fixed;
 
   left: 50%;
@@ -46,19 +50,22 @@ body {
   width: 100%;
 
   display: flex;
+
   justify-content: center;
 
   padding: 20px;
 
-  z-index: 9999;
+  z-index: 100;
+
 }
 
 
 /* =====================================================
-   CARD
+   MAIN CARD
 ===================================================== */
 
 .card {
+
   width: min(560px, 100%);
 
   background: #151515;
@@ -71,6 +78,7 @@ body {
 
   box-shadow:
     0 20px 60px rgba(0,0,0,.9);
+
 }
 
 
@@ -79,13 +87,19 @@ body {
 ===================================================== */
 
 .logo {
+
   font-size: 30px;
+
   font-weight: 900;
+
   letter-spacing: 2px;
+
 }
 
 .logo span {
+
   color: #e21b23;
+
 }
 
 
@@ -94,28 +108,41 @@ body {
 ===================================================== */
 
 .sub {
+
   color: #aaa;
+
   margin: 6px 0 24px;
+
 }
 
 
 /* =====================================================
-   FORM
+   FORM ROW
 ===================================================== */
 
 .row {
+
   margin: 15px 0;
+
 }
 
 label {
+
   display: block;
 
   font-weight: 700;
 
   margin-bottom: 7px;
+
 }
 
+
+/* =====================================================
+   INPUT
+===================================================== */
+
 input {
+
   width: 100%;
 
   padding: 14px;
@@ -128,18 +155,29 @@ input {
 
   color: #fff;
 
-  font-family: 'Roboto Condensed', Arial, sans-serif;
+  font-family:
+    'Roboto Condensed',
+    Arial,
+    sans-serif;
 
   font-size: 16px;
 
   outline: none;
+
+  transition:
+    border-color .2s,
+    box-shadow .2s;
+
 }
 
+
 input:focus {
+
   border-color: #e21b23;
 
   box-shadow:
     0 0 0 2px rgba(226,27,35,.15);
+
 }
 
 
@@ -148,6 +186,7 @@ input:focus {
 ===================================================== */
 
 button {
+
   width: 100%;
 
   padding: 14px;
@@ -156,7 +195,10 @@ button {
 
   border-radius: 10px;
 
-  font-family: 'Roboto Condensed', Arial, sans-serif;
+  font-family:
+    'Roboto Condensed',
+    Arial,
+    sans-serif;
 
   font-size: 16px;
 
@@ -164,41 +206,66 @@ button {
 
   cursor: pointer;
 
-  transition: .15s;
+  transition:
+    transform .15s,
+    opacity .15s;
+
 }
+
 
 button:hover {
+
   opacity: .9;
+
 }
+
 
 button:active {
+
   transform: scale(.98);
+
 }
+
+
+/* PRIMARY */
 
 .primary {
+
   background: #e21b23;
+
   color: #fff;
+
 }
 
+
+/* SECONDARY */
+
 .secondary {
+
   background: #292929;
+
   color: #fff;
 
   margin-top: 10px;
+
 }
 
 
 /* =====================================================
-   URL
+   URL BOX
 ===================================================== */
 
 .urlbox {
+
   display: none;
 
   margin-top: 22px;
+
 }
 
+
 .url {
+
   padding: 12px;
 
   background: #090909;
@@ -214,6 +281,7 @@ button:active {
   font-family: monospace;
 
   font-size: 13px;
+
 }
 
 
@@ -222,6 +290,7 @@ button:active {
 ===================================================== */
 
 .preview {
+
   margin-top: 22px;
 
   padding: 18px;
@@ -231,14 +300,18 @@ button:active {
   border: 1px solid #333;
 
   border-radius: 12px;
+
 }
 
+
 .previewTitle {
+
   color: #aaa;
 
   font-size: 12px;
 
   margin-bottom: 12px;
+
 }
 
 
@@ -247,18 +320,30 @@ button:active {
 ===================================================== */
 
 .bodycam {
-  font-family: 'Roboto Condensed', Arial, sans-serif;
+
+  font-family:
+    'Roboto Condensed',
+    Arial,
+    sans-serif;
 
   font-weight: 800;
 
   text-shadow:
+
     2px 2px 0 #000,
+
     -2px -2px 0 #000,
+
     2px -2px 0 #000,
+
     -2px 2px 0 #000,
+
     0 2px 3px rgba(0,0,0,.95),
+
     0 4px 8px rgba(0,0,0,.75),
+
     0 7px 14px rgba(0,0,0,.50);
+
 }
 
 
@@ -267,6 +352,7 @@ button:active {
 ===================================================== */
 
 .top-line {
+
   display: flex;
 
   align-items: center;
@@ -276,21 +362,31 @@ button:active {
   font-size: 18px;
 
   font-weight: 900;
+
 }
+
 
 .rec {
+
   color: #ff3030;
+
 }
 
+
 .rec-dot {
+
   display: inline-block;
 
   color: #ff3030;
 
-  animation: recBlink 1s infinite;
+  animation:
+    recBlink 1s infinite;
+
 }
 
+
 .brand {
+
   color: #fff;
 
   font-size: 18px;
@@ -298,25 +394,35 @@ button:active {
   font-weight: 900;
 
   letter-spacing: 2px;
+
 }
 
 
 /* =====================================================
-   INFO
+   PLAYER / JOB
 ===================================================== */
 
 .info {
+
   font-size: 15px;
 
   margin-top: 4px;
+
 }
 
+
+/* =====================================================
+   CLOCK
+===================================================== */
+
 .clock {
+
   font-size: 17px;
 
   font-weight: 800;
 
   margin-top: 6px;
+
 }
 
 
@@ -328,21 +434,31 @@ button:active {
 
   0%,
   45% {
+
     opacity: 1;
 
     text-shadow:
+
       0 0 4px #ff3030,
+
       0 0 8px #ff3030,
+
       0 0 14px #ff3030,
+
       2px 2px 0 #000;
+
   }
+
 
   50%,
   100% {
+
     opacity: .25;
 
     text-shadow:
+
       2px 2px 0 #000;
+
   }
 
 }
@@ -353,6 +469,7 @@ button:active {
 ===================================================== */
 
 .small {
+
   font-size: 12px;
 
   color: #888;
@@ -360,6 +477,132 @@ button:active {
   margin-top: 15px;
 
   line-height: 1.5;
+
+}
+
+
+/* =====================================================
+   SOCIAL FOOTER
+===================================================== */
+
+.social-footer {
+
+  position: fixed;
+
+  left: 0;
+
+  bottom: 18px;
+
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 30px;
+
+  z-index: 9999;
+
+}
+
+
+/* =====================================================
+   SOCIAL LINKS
+===================================================== */
+
+.social {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #fff;
+
+  text-decoration: none;
+
+  font-family:
+    'Roboto Condensed',
+    Arial,
+    sans-serif;
+
+  font-size: 15px;
+
+  font-weight: 800;
+
+  letter-spacing: .5px;
+
+  text-shadow:
+
+    0 2px 3px rgba(0,0,0,.95),
+
+    0 4px 8px rgba(0,0,0,.75);
+
+  transition:
+
+    transform .2s,
+
+    opacity .2s;
+
+}
+
+
+.social:hover {
+
+  transform:
+    translateY(-2px);
+
+  opacity: .85;
+
+}
+
+
+/* =====================================================
+   SOCIAL ICON
+===================================================== */
+
+.social svg {
+
+  width: 21px;
+
+  height: 21px;
+
+  display: block;
+
+  fill: currentColor;
+
+}
+
+
+/* =====================================================
+   YOUTUBE
+===================================================== */
+
+.youtube svg {
+
+  fill: #ff0000;
+
+}
+
+
+.youtube .play {
+
+  fill: #fff;
+
+}
+
+
+/* =====================================================
+   KICK
+===================================================== */
+
+.kick svg {
+
+  fill: #53fc18;
+
 }
 
 
@@ -369,22 +612,57 @@ button:active {
 
 @media (max-width: 650px) {
 
+
   .page-center {
+
     position: absolute;
 
     top: 20px;
 
-    transform: translateX(-50%);
+    transform:
+      translateX(-50%);
 
     padding: 15px;
+
   }
+
 
   .card {
+
     padding: 22px;
+
   }
 
+
   .logo {
+
     font-size: 25px;
+
+  }
+
+
+  .social-footer {
+
+    bottom: 12px;
+
+    gap: 20px;
+
+  }
+
+
+  .social {
+
+    font-size: 14px;
+
+  }
+
+
+  .social svg {
+
+    width: 19px;
+
+    height: 19px;
+
   }
 
 }
@@ -392,11 +670,12 @@ button:active {
 </style>
 </head>
 
+
 <body>
 
 
 <!-- =====================================================
-     CENTER CONTAINER
+     CENTERED GENERATOR
 ===================================================== -->
 
 <div class="page-center">
@@ -407,139 +686,240 @@ button:active {
     <!-- HEADER -->
 
     <div class="logo">
-      BODYCAM <span>BY MAVILIVE</span>
+
+      BODYCAM
+      <span>BY MAVILIVE</span>
+
     </div>
+
 
     <div class="sub">
+
       Bodycam By MAVILIVE • FiveM Overlay Generator
+
     </div>
 
 
-    <!-- PLAYER -->
+    <!-- =================================================
+         PLAYER NAME
+    ================================================== -->
 
     <div class="row">
 
       <label for="player">
+
         Player Name *
+
       </label>
 
+
       <input
+
         id="player"
+
         maxlength="40"
+
         placeholder="Enter player name"
+
         autocomplete="off"
+
       >
 
     </div>
 
 
-    <!-- JOB -->
+    <!-- =================================================
+         JOB
+    ================================================== -->
 
     <div class="row">
 
       <label for="job">
+
         Job
+
       </label>
 
+
       <input
+
         id="job"
+
         maxlength="40"
+
         placeholder="Leave blank for CIVILIAN"
+
         autocomplete="off"
+
       >
 
     </div>
 
 
-    <!-- GENERATE -->
+    <!-- =================================================
+         GENERATE
+    ================================================== -->
 
     <button
+
       class="primary"
+
       onclick="generate()"
+
     >
+
       GENERATE OBS URL
+
     </button>
 
 
-    <!-- URL -->
+    <!-- =================================================
+         URL BOX
+    ================================================== -->
 
     <div
+
       id="urlbox"
+
       class="urlbox"
+
     >
 
+
       <div class="previewTitle">
+
         OBS Browser Source URL
+
       </div>
 
+
       <div
+
         id="url"
+
         class="url"
+
       ></div>
 
-      <button
-        class="secondary"
-        onclick="copyUrl()"
-      >
-        COPY OBS URL
-      </button>
 
       <button
+
         class="secondary"
-        onclick="generate()"
+
+        onclick="copyUrl()"
+
       >
-        REGENERATE
+
+        COPY OBS URL
+
       </button>
+
+
+      <button
+
+        class="secondary"
+
+        onclick="generate()"
+
+      >
+
+        REGENERATE
+
+      </button>
+
 
     </div>
 
 
-    <!-- PREVIEW -->
+    <!-- =================================================
+         LIVE PREVIEW
+    ================================================== -->
 
     <div class="preview">
 
+
       <div class="previewTitle">
+
         LIVE PREVIEW
+
       </div>
+
 
       <div class="bodycam">
 
+
+        <!-- TOP -->
+
         <div class="top-line">
 
+
           <span class="rec">
-            <span class="rec-dot">●</span>
+
+            <span class="rec-dot">
+
+              ●
+
+            </span>
+
             REC
+
           </span>
+
 
           <span class="brand">
+
             BODYCAM
+
           </span>
 
+
         </div>
 
 
+        <!-- PLAYER -->
+
         <div
+
           id="pview"
+
           class="info"
+
         >
+
           PLAYER: —
+
         </div>
 
 
+        <!-- JOB -->
+
         <div
+
           id="jview"
+
           class="info"
+
         >
+
           CIVILIAN
+
         </div>
 
+
+        <!-- CLOCK -->
 
         <div
+
           id="clock"
+
           class="clock"
+
         >
+
           --/--/---- --:--:-- --
+
         </div>
+
 
       </div>
 
@@ -551,7 +931,9 @@ button:active {
     <div class="small">
 
       The generated URL is self-contained.
+
       It does not use localStorage and has no expiration timer,
+
       so it can be pasted into OBS or opened on another device.
 
     </div>
@@ -562,63 +944,197 @@ button:active {
 </div>
 
 
+
+<!-- =====================================================
+     SOCIAL FOOTER
+===================================================== -->
+
+<footer class="social-footer">
+
+
+  <!-- YOUTUBE -->
+
+  <a
+
+    href="#"
+
+    class="social youtube"
+
+    target="_blank"
+
+    rel="noopener"
+
+  >
+
+
+    <svg
+
+      viewBox="0 0 24 24"
+
+      aria-hidden="true"
+
+    >
+
+      <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8z"/>
+
+      <path
+
+        class="play"
+
+        d="M9.6 15.5v-7l6 3.5-6 3.5z"
+
+      />
+
+    </svg>
+
+
+    <span>
+
+      Mavilive
+
+    </span>
+
+
+  </a>
+
+
+
+  <!-- KICK -->
+
+  <a
+
+    href="#"
+
+    class="social kick"
+
+    target="_blank"
+
+    rel="noopener"
+
+  >
+
+
+    <svg
+
+      viewBox="0 0 24 24"
+
+      aria-hidden="true"
+
+    >
+
+      <path d="M3 2h7v6l3-6h8l-6 10 6 10h-8l-3-6v6H3V2z"/>
+
+    </svg>
+
+
+    <span>
+
+      Maavilive
+
+    </span>
+
+
+  </a>
+
+
+</footer>
+
+
+
 <script>
 
+
+/* =====================================================
+   GENERATED URL
+===================================================== */
 
 let generatedUrl = "";
 
 
 /* =====================================================
-   PREVIEW
+   UPDATE PREVIEW
 ===================================================== */
 
 function updatePreview() {
 
+
   const player =
+
     document
+
       .getElementById("player")
+
       .value
-      .trim() || "—";
+
+      .trim()
+
+      || "—";
 
 
   const job =
+
     document
+
       .getElementById("job")
+
       .value
-      .trim() || "CIVILIAN";
+
+      .trim()
+
+      || "CIVILIAN";
 
 
   document
+
     .getElementById("pview")
+
     .textContent =
+
       "PLAYER: " + player;
 
 
   document
+
     .getElementById("jview")
+
     .textContent =
+
       job.toUpperCase();
 
 }
 
 
 /* =====================================================
-   INPUT EVENTS
+   PLAYER INPUT
 ===================================================== */
 
 document
+
   .getElementById("player")
+
   .addEventListener(
+
     "input",
+
     updatePreview
+
   );
 
 
+/* =====================================================
+   JOB INPUT
+===================================================== */
+
 document
+
   .getElementById("job")
+
   .addEventListener(
+
     "input",
+
     updatePreview
+
   );
 
 
@@ -628,25 +1144,40 @@ document
 
 function generate() {
 
+
   const player =
+
     document
+
       .getElementById("player")
+
       .value
+
       .trim();
 
 
   const job =
+
     document
+
       .getElementById("job")
+
       .value
-      .trim() || "CIVILIAN";
+
+      .trim()
+
+      || "CIVILIAN";
 
 
   if (!player) {
 
+
     alert(
+
       "Please enter a Player Name."
+
     );
+
 
     return;
 
@@ -654,6 +1185,7 @@ function generate() {
 
 
   const params =
+
     new URLSearchParams({
 
       player: player,
@@ -664,9 +1196,11 @@ function generate() {
 
 
   generatedUrl =
+
     new URL(
 
       "/overlay.html?" +
+
       params.toString(),
 
       window.location.origin
@@ -675,22 +1209,33 @@ function generate() {
 
 
   document
+
     .getElementById("url")
+
     .textContent =
+
       generatedUrl;
 
 
   document
+
     .getElementById("urlbox")
+
     .style.display =
+
       "block";
 
 
   document
+
     .getElementById("urlbox")
+
     .scrollIntoView({
+
       behavior: "smooth",
+
       block: "center"
+
     });
 
 }
@@ -702,30 +1247,44 @@ function generate() {
 
 async function copyUrl() {
 
+
   if (!generatedUrl) {
+
     return;
+
   }
 
 
   try {
 
+
     await navigator
+
       .clipboard
+
       .writeText(
+
         generatedUrl
+
       );
 
 
     alert(
+
       "OBS URL copied!"
+
     );
 
 
   } catch (e) {
 
+
     prompt(
+
       "Copy this OBS URL:",
+
       generatedUrl
+
     );
 
   }
@@ -734,82 +1293,126 @@ async function copyUrl() {
 
 
 /* =====================================================
-   CLOCK
+   LIVE CLOCK
 ===================================================== */
 
 function clock() {
 
+
   const now =
+
     new Date();
 
 
   const day =
+
     String(
+
       now.getDate()
+
     ).padStart(
+
       2,
+
       "0"
+
     );
 
 
   const month =
+
     String(
+
       now.getMonth() + 1
+
     ).padStart(
+
       2,
+
       "0"
+
     );
 
 
   const year =
+
     now.getFullYear();
 
 
   let hours =
+
     now.getHours();
 
 
   const minutes =
+
     String(
+
       now.getMinutes()
+
     ).padStart(
+
       2,
+
       "0"
+
     );
 
 
   const seconds =
+
     String(
+
       now.getSeconds()
+
     ).padStart(
+
       2,
+
       "0"
+
     );
 
 
   const ampm =
+
     hours >= 12
+
       ? "PM"
+
       : "AM";
 
 
   hours =
+
     hours % 12 || 12;
 
 
   document
+
     .getElementById("clock")
+
     .textContent =
+
       `${day}/${month}/${year} ` +
+
       `${hours}:${minutes}:${seconds} ` +
+
       `${ampm}`;
 
 }
 
 
+/* =====================================================
+   START
+===================================================== */
+
 setInterval(
+
   clock,
+
   1000
+
 );
 
 
@@ -817,8 +1420,8 @@ clock();
 
 updatePreview();
 
-
 </script>
+
 
 </body>
 </html>
