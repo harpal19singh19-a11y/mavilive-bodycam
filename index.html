@@ -121,7 +121,6 @@ button {
   font-family: monospace;
   font-weight: 700;
 
-  /* Shadow behind preview text */
   text-shadow:
     2px 2px 0 #000,
     -2px -2px 0 #000,
@@ -130,25 +129,19 @@ button {
     0 3px 6px rgba(0,0,0,.95);
 }
 
-/* REC text */
 .rec {
   color: #ff3030;
 }
 
-/* Blinking REC dot */
 .rec-dot {
   display: inline-block;
   color: #ff3030;
-
   animation: recBlink 1s infinite;
 }
 
 @keyframes recBlink {
-
-  0%,
-  45% {
+  0%, 45% {
     opacity: 1;
-
     text-shadow:
       0 0 3px #ff3030,
       0 0 7px #ff3030,
@@ -156,10 +149,8 @@ button {
       2px 2px 0 #000;
   }
 
-  50%,
-  100% {
+  50%, 100% {
     opacity: .25;
-
     text-shadow:
       2px 2px 0 #000;
   }
@@ -188,6 +179,7 @@ button {
 
   <div class="row">
     <label for="player">Player Name *</label>
+
     <input
       id="player"
       maxlength="40"
@@ -198,6 +190,7 @@ button {
 
   <div class="row">
     <label for="department">Department</label>
+
     <input
       id="department"
       maxlength="40"
@@ -249,11 +242,6 @@ button {
         --/--/---- --:--:--
       </div>
 
-      <!-- BODYCAM -->
-      <div>
-        BODYCAM BY MAVILIVE
-      </div>
-
       <!-- PLAYER -->
       <div id="pview">
         PLAYER: —
@@ -280,9 +268,7 @@ button {
 let generatedUrl = "";
 
 
-/* =========================
-   LIVE PREVIEW
-========================= */
+/* LIVE PREVIEW */
 
 function updatePreview() {
 
@@ -300,9 +286,6 @@ function updatePreview() {
     "DEPT: " + d;
 }
 
-
-/* Update preview while typing */
-
 document
   .getElementById("player")
   .addEventListener("input", updatePreview);
@@ -312,9 +295,7 @@ document
   .addEventListener("input", updatePreview);
 
 
-/* =========================
-   GENERATE OBS URL
-========================= */
+/* GENERATE OBS URL */
 
 function generate() {
 
@@ -327,29 +308,17 @@ function generate() {
     document.getElementById("department")
       .value
       .trim()
-      || "CIVILIAN";
-
+    || "CIVILIAN";
 
   if (!player) {
-
     alert("Please enter a Player Name.");
-
     return;
   }
-
-
-  /*
-    No recording start time is added.
-
-    This means the generated URL
-    does NOT contain a recording countdown.
-  */
 
   const params = new URLSearchParams({
     player,
     department
   });
-
 
   generatedUrl =
     new URL(
@@ -357,7 +326,6 @@ function generate() {
       params.toString(),
       window.location.origin
     ).href;
-
 
   document.getElementById("url").textContent =
     generatedUrl;
@@ -374,9 +342,7 @@ function generate() {
 }
 
 
-/* =========================
-   COPY OBS URL
-========================= */
+/* COPY OBS URL */
 
 async function copyUrl() {
 
@@ -400,9 +366,7 @@ async function copyUrl() {
 }
 
 
-/* =========================
-   DATE / TIME
-========================= */
+/* DATE / TIME */
 
 function clock() {
 
