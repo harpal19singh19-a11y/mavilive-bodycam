@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MAVILIVE Bodycam</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:transparent!important}
+body{font-family:Arial,Helvetica,sans-serif;color:#fff}
+.cam{position:absolute;left:28px;top:28px;width:300px;padding:17px 18px 14px;background:rgba(7,9,12,.88);border:1px solid rgba(255,255,255,.72);border-radius:4px;box-shadow:0 7px 28px rgba(0,0,0,.38)}
+.rec{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:900;letter-spacing:1.4px}
+.dot{width:10px;height:10px;border-radius:50%;background:#f22;box-shadow:0 0 10px #f22;animation:blink 1s infinite}
+@keyframes blink{0%,45%{opacity:1}46%,100%{opacity:.15}}
+.line{height:1px;background:rgba(255,255,255,.5);margin:12px 0 18px}
+.badge{font-size:18px;font-weight:900;letter-spacing:3.5px;margin-bottom:25px}
+.field{margin-bottom:23px}.label{font-size:9px;font-weight:800;letter-spacing:1.7px;color:rgba(255,255,255,.57);margin-bottom:7px}
+.value{font-size:16px;font-weight:800;letter-spacing:.7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bottom{height:1px;background:rgba(255,255,255,.5);margin:3px 0 12px}
+.time{font-size:15px;font-weight:800;letter-spacing:.7px;color:rgba(255,255,255,.9)}
+</style>
+</head>
+<body>
+<div class="cam">
+  <div class="rec"><span class="dot"></span>REC</div>
+  <div class="line"></div>
+  <div class="badge">BODYCAM</div>
+  <div class="field"><div class="label">PLAYER NAME</div><div class="value" id="player">MAVI</div></div>
+  <div class="field"><div class="label">DEPARTMENT</div><div class="value" id="department">CIVILIAN</div></div>
+  <div class="bottom"></div>
+  <div class="time" id="time">00/00/0000 00:00:00</div>
+</div>
+<script>
+const q=new URLSearchParams(location.search);
+document.getElementById('player').textContent=(q.get('player')||'MAVI').trim()||'MAVI';
+document.getElementById('department').textContent=(q.get('department')||'CIVILIAN').trim()||'CIVILIAN';
+function clock(){const d=new Date(),p=n=>String(n).padStart(2,'0');document.getElementById('time').textContent=`${p(d.getDate())}/${p(d.getMonth()+1)}/${d.getFullYear()} ${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}`}
+clock();setInterval(clock,1000);
+</script>
+</body>
+</html>
