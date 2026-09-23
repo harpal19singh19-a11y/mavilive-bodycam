@@ -30,7 +30,7 @@ body {
 
 
 /* =========================
-   MAIN BODYCAM OVERLAY
+   MAIN OVERLAY
    ========================= */
 
 .wrap {
@@ -41,11 +41,11 @@ body {
   font-weight: 700;
   letter-spacing: .6px;
 
-  /* SOFT SHADOW */
+  /* SOFT BLACK SHADOW */
   text-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.85),
-    0 2px 5px rgba(0, 0, 0, 0.65),
-    0 4px 10px rgba(0, 0, 0, 0.45);
+    0 2px 3px rgba(0, 0, 0, 0.95),
+    0 4px 8px rgba(0, 0, 0, 0.75),
+    0 7px 14px rgba(0, 0, 0, 0.50);
 }
 
 
@@ -67,12 +67,14 @@ body {
 
 .rec {
   color: #ff3030;
+
   font-weight: 800;
 
-  /* Soft red shadow */
+  /* Soft BLACK shadow only */
   text-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.85),
-    0 0 5px rgba(255, 48, 48, 0.35);
+    0 2px 3px rgba(0, 0, 0, 0.95),
+    0 4px 8px rgba(0, 0, 0, 0.75),
+    0 7px 14px rgba(0, 0, 0, 0.50);
 }
 
 
@@ -96,11 +98,11 @@ body {
 
   letter-spacing: 2.5px;
 
-  /* Soft white text shadow */
+  /* Soft BLACK shadow */
   text-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.9),
-    0 2px 5px rgba(0, 0, 0, 0.65),
-    0 4px 9px rgba(0, 0, 0, 0.4);
+    0 2px 3px rgba(0, 0, 0, 0.95),
+    0 4px 8px rgba(0, 0, 0, 0.75),
+    0 7px 14px rgba(0, 0, 0, 0.50);
 }
 
 
@@ -117,9 +119,9 @@ body {
   letter-spacing: .7px;
 
   text-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.9),
-    0 2px 5px rgba(0, 0, 0, 0.65),
-    0 4px 9px rgba(0, 0, 0, 0.4);
+    0 2px 3px rgba(0, 0, 0, 0.95),
+    0 4px 8px rgba(0, 0, 0, 0.75),
+    0 7px 14px rgba(0, 0, 0, 0.50);
 }
 
 
@@ -136,14 +138,14 @@ body {
   letter-spacing: .8px;
 
   text-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.9),
-    0 2px 5px rgba(0, 0, 0, 0.65),
-    0 4px 9px rgba(0, 0, 0, 0.4);
+    0 2px 3px rgba(0, 0, 0, 0.95),
+    0 4px 8px rgba(0, 0, 0, 0.75),
+    0 7px 14px rgba(0, 0, 0, 0.50);
 }
 
 
 /* =========================
-   REC BLINKING
+   REC BLINK
    ========================= */
 
 @keyframes recBlink {
@@ -153,9 +155,9 @@ body {
     opacity: 1;
 
     text-shadow:
-      0 1px 2px rgba(0, 0, 0, 0.9),
-      0 0 4px rgba(255, 48, 48, 0.8),
-      0 0 9px rgba(255, 48, 48, 0.45);
+      0 2px 3px rgba(0, 0, 0, 0.95),
+      0 4px 8px rgba(0, 0, 0, 0.75),
+      0 7px 14px rgba(0, 0, 0, 0.50);
   }
 
   50%,
@@ -163,7 +165,8 @@ body {
     opacity: .25;
 
     text-shadow:
-      0 1px 2px rgba(0, 0, 0, 0.8);
+      0 2px 3px rgba(0, 0, 0, 0.95),
+      0 4px 8px rgba(0, 0, 0, 0.65);
   }
 }
 
@@ -184,9 +187,7 @@ const department =
   q.get("department") || "CIVILIAN";
 
 
-/* =========================
-   ESCAPE HTML
-   ========================= */
+/* Escape HTML */
 
 function escapeHtml(s) {
 
@@ -205,9 +206,7 @@ function escapeHtml(s) {
 }
 
 
-/* =========================
-   CHECK PLAYER NAME
-   ========================= */
+/* Check player */
 
 if (!player) {
 
@@ -218,14 +217,10 @@ if (!player) {
 
   document.getElementById("app").innerHTML = `
 
-    <!-- REC + BODYCAM -->
     <div class="top-line">
 
       <span class="rec">
-
-        <span class="rec-dot">●</span>
-        REC
-
+        <span class="rec-dot">●</span> REC
       </span>
 
       <span class="brand">
@@ -235,19 +230,16 @@ if (!player) {
     </div>
 
 
-    <!-- PLAYER -->
     <div class="info">
       PLAYER: ${escapeHtml(player)}
     </div>
 
 
-    <!-- DEPARTMENT -->
     <div class="info">
       DEPT: ${escapeHtml(department)}
     </div>
 
 
-    <!-- DATE / TIME -->
     <div id="clock" class="clock">
       --/--/---- --:--:--
     </div>
@@ -255,9 +247,7 @@ if (!player) {
   `;
 
 
-  /* =========================
-     LIVE DATE & TIME
-     ========================= */
+  /* Live date and time */
 
   function updateClock() {
 
