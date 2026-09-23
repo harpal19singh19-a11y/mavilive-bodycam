@@ -1,0 +1,110 @@
+# MAVILIVE Bodycam OBS Overlay
+
+A transparent FiveM-style bodycam overlay and URL generator for OBS Browser Source.
+
+## Features
+
+- MAVILIVE branding
+- Player Name field
+- Department field
+- Automatic `CIVILIAN` fallback when Department is empty
+- Live preview
+- Blinking red `REC` indicator
+- Live date and time
+- Generate OBS URL button
+- Copy OBS URL button
+- URL parameters
+- No localStorage
+- Single-file HTML
+- Works as an OBS Browser Source
+
+## Files
+
+- `overlay.html` — main bodycam overlay and URL generator
+
+## How to use
+
+### 1. Upload
+
+Upload `overlay.html` to your web hosting service.
+
+For example:
+
+`https://your-domain.com/overlay.html`
+
+### 2. Open the page
+
+Open the hosted `overlay.html` in your browser.
+
+Enter:
+
+- Player Name
+- Department
+
+If Department is empty, the overlay automatically uses:
+
+`CIVILIAN`
+
+### 3. Generate the OBS URL
+
+Click:
+
+`GENERATE OBS URL`
+
+Then click:
+
+`COPY OBS URL`
+
+### 4. Add to OBS
+
+In OBS:
+
+1. Add a **Browser Source**.
+2. Paste the generated URL.
+3. Set the Browser Source resolution to match your stream, for example:
+   - Width: `1920`
+   - Height: `1080`
+4. Leave the page background transparent.
+5. Position the overlay where you want it on your FiveM stream.
+
+## URL parameters
+
+The overlay supports:
+
+`?player=PlayerName&department=DepartmentName`
+
+Example:
+
+`https://your-domain.com/overlay.html?player=Mavi&department=Police`
+
+Civilian example:
+
+`https://your-domain.com/overlay.html?player=Mavi&department=CIVILIAN`
+
+## Important
+
+The URL must point to the publicly hosted `overlay.html` file for OBS to load it.
+
+Do not use a local computer path such as:
+
+`C:\Users\...\overlay.html`
+
+Use the public HTTPS URL from your hosting provider.
+
+## Customization
+
+You can edit `overlay.html` to change:
+
+- MAVILIVE branding
+- Fonts
+- Text sizes
+- Positions
+- REC animation
+- Bodycam badge
+- Colors
+- Date/time format
+- Preview appearance
+
+## Privacy
+
+This version does not use `localStorage`. Player and department information are stored only in the generated URL parameters.
