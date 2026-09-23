@@ -6,6 +6,7 @@
 
 <title>BODYCAM</title>
 
+<!-- BODYCAM FONT -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -61,7 +62,9 @@ body {
 }
 
 
-/* REC */
+/* =========================
+   REC
+   ========================= */
 
 .rec {
   color: #ff3030;
@@ -75,7 +78,9 @@ body {
 }
 
 
-/* REC DOT */
+/* =========================
+   REC DOT
+   ========================= */
 
 .rec-dot {
   display: inline-block;
@@ -85,7 +90,9 @@ body {
 }
 
 
-/* BODYCAM */
+/* =========================
+   BODYCAM
+   ========================= */
 
 .brand {
   color: #fff;
@@ -103,7 +110,7 @@ body {
 
 
 /* =========================
-   PLAYER
+   PLAYER / DEPARTMENT
    ========================= */
 
 .info {
@@ -175,12 +182,28 @@ body {
 
 <script>
 
+/* =========================
+   GET URL PARAMETERS
+   ========================= */
+
 const q = new URLSearchParams(location.search);
 
-const player = q.get("player");
+
+/* PLAYER NAME */
+
+const player =
+  q.get("player") || "PLAYER";
 
 
-/* Escape HTML */
+/* DEPARTMENT / JOB */
+
+const department =
+  q.get("department") || "CIVILIAN";
+
+
+/* =========================
+   ESCAPE HTML
+   ========================= */
 
 function escapeHtml(s) {
 
@@ -199,61 +222,71 @@ function escapeHtml(s) {
 }
 
 
-/* Check player */
+/* =========================
+   CREATE OVERLAY
+   ========================= */
 
-if (!player) {
+document.getElementById("app").innerHTML = `
 
-  document.getElementById("app").innerHTML =
-    '<div>Invalid Bodycam overlay URL.</div>';
+  <!-- REC + BODYCAM -->
 
-} else {
+  <div class="top-line">
 
-  document.getElementById("app").innerHTML = `
+    <span class="rec">
+      <span class="rec-dot">●</span> REC
+    </span>
 
-    <div class="top-line">
+    <span class="brand">
+      BODYCAM
+    </span>
 
-      <span class="rec">
-        <span class="rec-dot">●</span> REC
-      </span>
-
-      <span class="brand">
-        BODYCAM
-      </span>
-
-    </div>
+  </div>
 
 
-    <div class="info">
-      PLAYER: ${escapeHtml(player)}
-    </div>
+  <!-- PLAYER -->
+
+  <div class="info">
+    PLAYER: ${escapeHtml(player)}
+  </div>
 
 
-    <div id="clock" class="clock">
-      --/--/---- --:--:--
-    </div>
+  <!-- DEPARTMENT -->
 
-  `;
-
-
-  /* Live date and time */
-
-  function updateClock() {
-
-    const now = new Date();
-
-    document.getElementById("clock").textContent =
-      now.toLocaleDateString() +
-      " " +
-      now.toLocaleTimeString();
-
-  }
+  <div class="info">
+    DEPT: ${escapeHtml(department)}
+  </div>
 
 
-  updateClock();
+  <!-- DATE / TIME -->
 
-  setInterval(updateClock, 1000);
+  <div id="clock" class="clock">
+    --/--/---- --:--:--
+  </div>
+
+`;
+
+
+/* =========================
+   LIVE DATE / TIME
+   ========================= */
+
+function updateClock() {
+
+  const now = new Date();
+
+  document.getElementById("clock").textContent =
+    now.toLocaleDateString() +
+    " " +
+    now.toLocaleTimeString();
 
 }
+
+
+/* START CLOCK */
+
+updateClock();
+
+setInterval(updateClock, 1000);
 
 </script>
 
