@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +6,6 @@
 
 <title>BODYCAM</title>
 
-<!-- BODYCAM FONT -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -70,7 +68,6 @@ body {
 
   font-weight: 800;
 
-  /* Soft BLACK shadow only */
   text-shadow:
     0 2px 3px rgba(0, 0, 0, 0.95),
     0 4px 8px rgba(0, 0, 0, 0.75),
@@ -98,7 +95,6 @@ body {
 
   letter-spacing: 2.5px;
 
-  /* Soft BLACK shadow */
   text-shadow:
     0 2px 3px rgba(0, 0, 0, 0.95),
     0 4px 8px rgba(0, 0, 0, 0.75),
@@ -107,7 +103,7 @@ body {
 
 
 /* =========================
-   PLAYER / DEPARTMENT
+   PLAYER
    ========================= */
 
 .info {
@@ -183,9 +179,6 @@ const q = new URLSearchParams(location.search);
 
 const player = q.get("player");
 
-const department =
-  q.get("department") || "CIVILIAN";
-
 
 /* Escape HTML */
 
@@ -235,11 +228,6 @@ if (!player) {
     </div>
 
 
-    <div class="info">
-      DEPT: ${escapeHtml(department)}
-    </div>
-
-
     <div id="clock" class="clock">
       --/--/---- --:--:--
     </div>
@@ -271,4 +259,3 @@ if (!player) {
 
 </body>
 </html>
-```
